@@ -8,7 +8,7 @@
   "license": "MIT",
   "description": "Fullstack social media responsive app",
   "scripts": {
-    "dev": "nodemon --watch './*.ts'  --exec ts-node-esm index.ts"
+    "dev": "nodemon --watch './index' --exec ts-node-esm index.ts"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -25,7 +25,9 @@
   },
   "devDependencies": {
     "@tsconfig/node-lts-strictest-esm": "^18.12.1",
+    "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
+    "@types/jsonwebtoken": "^8.5.9",
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.3"
   }

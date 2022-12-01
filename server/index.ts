@@ -10,6 +10,10 @@ import { fileURLToPath } from "url";
 
 import { register } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+import postsRoutes from "./routes/posts.js";
+import { verifyToken } from "./middleware/auth.js";
+import { createPost } from "./controllers/posts.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -40,9 +44,12 @@ const upload = multer({ storage });
 
 /* AUTH ROUTE WITH FILE */
 app.post("/auth/register", upload.single("picture"), register);
+app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* ROUTES */
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+app.use("/posts", postsRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 5001;

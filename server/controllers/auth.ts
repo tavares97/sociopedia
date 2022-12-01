@@ -5,6 +5,13 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
 /* REGISTER USER */
+/**
+ * It takes in the user's information, hashes the password, creates a new user object, and saves it to
+ * the database
+ * @param {Request} req - Request - This is the request object that is sent from the frontend.
+ * @param {Response} res - Response - This is the response object that we will send back to the
+ * frontend.
+ */
 export async function register(req: Request, res: Response) {
   try {
     const {
@@ -45,6 +52,14 @@ export async function register(req: Request, res: Response) {
 }
 
 /* LOGGING IN USER */
+/**
+ * We're taking in the user's email and password from the request body, finding the user in the
+ * database, comparing the password, creating a token, and sending the token and user back to the
+ * frontend
+ * @param {Request} req - Request - This is the request object that is passed in from the client.
+ * @param {Response} res - Response - This is the response object that we will send back to the client.
+ * @returns A token and the user object
+ */
 export async function login(req: Request, res: Response) {
   try {
     const { email, password } = req.body;
